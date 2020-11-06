@@ -19,8 +19,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @ToString
 //@JsonIgnoreProperties(value= {"residence"})
 public class BillDTO {
@@ -49,4 +49,67 @@ public class BillDTO {
 
     private ResidenceDTO residence;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(LocalDateTime dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public LocalDateTime getDateUpdating() {
+        return dateUpdating;
+    }
+
+    public void setDateUpdating(LocalDateTime dateUpdating) {
+        this.dateUpdating = dateUpdating;
+    }
+
+    public LocalDate getPaymentDay() {
+        return paymentDay;
+    }
+
+    public void setPaymentDay(LocalDate paymentDay) {
+        this.paymentDay = paymentDay;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public UserDTO getPayingUser() {
+        return payingUser;
+    }
+
+    public void setPayingUser(UserDTO payingUser) {
+        this.payingUser = payingUser;
+    }
+
+    public ResidenceDTO getResidence() {
+        return residence;
+    }
+
+    public void setResidence(ResidenceDTO residence) {
+        this.residence = residence;
+    }
 }

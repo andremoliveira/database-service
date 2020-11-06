@@ -24,8 +24,8 @@ import java.util.Set;
 
 @Entity
 @Table(name = "residence")
-@Getter
-@Setter
+//@Getter
+//@Setter
 @ToString
 public class Residence {
 
@@ -59,4 +59,59 @@ public class Residence {
 //    @JsonIgnore
     private Set<UserEntity> users;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public LocalDateTime getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(LocalDateTime dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public LocalDateTime getDateUpdating() {
+        return dateUpdating;
+    }
+
+    public void setDateUpdating(LocalDateTime dateUpdating) {
+        this.dateUpdating = dateUpdating;
+    }
+
+    public LocalDateTime getDateExclusion() {
+        return dateExclusion;
+    }
+
+    public void setDateExclusion(LocalDateTime dateExclusion) {
+        this.dateExclusion = dateExclusion;
+    }
+
+    public Set<UserEntity> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserEntity> users) {
+        this.users = users;
+    }
 }

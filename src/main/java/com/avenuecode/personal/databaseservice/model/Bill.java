@@ -22,8 +22,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "bill")
-@Getter
-@Setter
+//@Getter
+//@Setter
 @ToString
 public class Bill {
 
@@ -54,4 +54,68 @@ public class Bill {
     @ManyToOne
     @JoinColumn(name = "residence_id", nullable = false)
     private Residence residence;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(LocalDateTime dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public LocalDateTime getDateUpdating() {
+        return dateUpdating;
+    }
+
+    public void setDateUpdating(LocalDateTime dateUpdating) {
+        this.dateUpdating = dateUpdating;
+    }
+
+    public LocalDate getPaymentDay() {
+        return paymentDay;
+    }
+
+    public void setPaymentDay(LocalDate paymentDay) {
+        this.paymentDay = paymentDay;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public UserEntity getPayingUser() {
+        return payingUser;
+    }
+
+    public void setPayingUser(UserEntity payingUser) {
+        this.payingUser = payingUser;
+    }
+
+    public Residence getResidence() {
+        return residence;
+    }
+
+    public void setResidence(Residence residence) {
+        this.residence = residence;
+    }
 }
