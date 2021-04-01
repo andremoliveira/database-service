@@ -4,6 +4,7 @@ import com.avenuecode.personal.databaseservice.model.Residence;
 import com.avenuecode.personal.databaseservice.model.UserEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -23,6 +24,7 @@ import java.time.LocalDateTime;
 //@Setter
 @ToString
 //@JsonIgnoreProperties(value= {"residence"})
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BillDTO {
 
     private Long id;

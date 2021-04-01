@@ -1,6 +1,7 @@
 package com.avenuecode.personal.databaseservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,6 +15,7 @@ import java.util.Set;
 //@Getter
 //@Setter
 @ToString
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResidenceDTO {
 
     private Long id;
