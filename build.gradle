@@ -30,6 +30,9 @@ dependencies {
 
 	compile "io.springfox:springfox-swagger2:2.9.2"
 	compile "io.springfox:springfox-swagger-ui:2.9.2"
+	
+	//Orika
+	implementation 'ma.glasnost.orika:orika-core:1.5.4'
 
 	testCompile "junit:junit:4.12"
 

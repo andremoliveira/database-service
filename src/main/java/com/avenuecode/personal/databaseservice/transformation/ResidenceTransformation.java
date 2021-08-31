@@ -1,45 +1,33 @@
 package com.avenuecode.personal.databaseservice.transformation;
 
 import com.avenuecode.personal.databaseservice.dto.ResidenceDTO;
+import com.avenuecode.personal.databaseservice.dto.UserDTO;
 import com.avenuecode.personal.databaseservice.model.Residence;
+import com.avenuecode.personal.databaseservice.model.UserEntity;
+import ma.glasnost.orika.BoundMapperFacade;
+import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class ResidenceTransformation {
 
+    private static MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
+
     private ResidenceTransformation() {
     }
 
     public static Residence toResidence(ResidenceDTO residenceDTO) {
 
-        Residence residence = new Residence();
-
-        residence.setId(residenceDTO.getId());
-        residence.setAddress(residenceDTO.getAddress());
-        residence.setName(residenceDTO.getName());
-        residence.setDateUpdating(residenceDTO.getDateUpdating());
-        residence.setDateCreation(residenceDTO.getDateCreation());
-        residence.setDateExclusion(residenceDTO.getDateExclusion());
-        residence.setUsers(UserTransformation.toUserList(residenceDTO.getUsers()));
-
-        return residence;
+        BoundMapperFacade<ResidenceDTO, Residence> boundMapperFacade = mapperFactory.getMapperFacade(ResidenceDTO.class, Residence.class);
+        return boundMapperFacade.map(residenceDTO);
     }
 
     public static ResidenceDTO toResidenceDTO(Residence residence) {
 
-        ResidenceDTO residenceDTO = new ResidenceDTO();
-
-        residenceDTO.setId(residence.getId());
-        residenceDTO.setAddress(residence.getAddress());
-        residenceDTO.setName(residence.getName());
-        residenceDTO.setDateUpdating(residence.getDateUpdating());
-        residenceDTO.setDateCreation(residence.getDateCreation());
-        residenceDTO.setDateExclusion(residence.getDateExclusion());
-        residenceDTO.setUsers(UserTransformation.toUserDTOList(residence.getUsers()));
-
-        return residenceDTO;
-
+        BoundMapperFacade<Residence, ResidenceDTO> boundMapperFacade = mapperFactory.getMapperFacade(Residence.class, ResidenceDTO.class);
+        return boundMapperFacade.map(residence);
     }
 
     public static Set<ResidenceDTO> toResidenceDTOList(Set<Residence> residences) {

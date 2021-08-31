@@ -2,17 +2,18 @@ package com.avenuecode.personal.databaseservice.transformation;
 
 import com.avenuecode.personal.databaseservice.dto.UserDTO;
 import com.avenuecode.personal.databaseservice.model.UserEntity;
+import ma.glasnost.orika.BoundMapperFacade;
+import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
 public class UserTransformation {
 
-    private UserTransformation(){}
+    private static MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
 
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private UserTransformation(){}
 
     public static UserEntity toUser(UserDTO userDTO) {
 
@@ -20,16 +21,8 @@ public class UserTransformation {
             return null;
         }
 
-        UserEntity userEntity = new UserEntity();
-
-        userEntity.setName(userDTO.getName());
-        userEntity.setEmail(userDTO.getEmail());
-        userEntity.setDateUpdating(userDTO.getDateUpdating());
-        userEntity.setDateCreation(userDTO.getDateCreation());
-        userEntity.setDateExclusion(userDTO.getDateExclusion());
-        userEntity.setId(userDTO.getId());
-
-        return userEntity;
+        BoundMapperFacade<UserDTO, UserEntity> boundMapperFacade = mapperFactory.getMapperFacade(UserDTO.class, UserEntity.class);
+        return boundMapperFacade.map(userDTO);
     }
 
     public static UserDTO toUserDTO(UserEntity userEntity) {
@@ -38,17 +31,8 @@ public class UserTransformation {
             return null;
         }
 
-        UserDTO userDTO = new UserDTO();
-
-        userDTO.setName(userEntity.getName());
-        userDTO.setEmail(userEntity.getEmail());
-        userDTO.setDateUpdating(userEntity.getDateUpdating());
-        userDTO.setDateCreation(userEntity.getDateCreation());
-        userDTO.setDateExclusion(userEntity.getDateExclusion());
-        userDTO.setId(userEntity.getId());
-
-        return userDTO;
-
+        BoundMapperFacade<UserEntity, UserDTO> boundMapperFacade = mapperFactory.getMapperFacade(UserEntity.class, UserDTO.class);
+        return boundMapperFacade.map(userEntity);
     }
 
     public static Set<UserDTO> toUserDTOList(Set<UserEntity> userEntities) {
@@ -81,7 +65,4 @@ public class UserTransformation {
         return userEntities;
     }
 
-    private static LocalDateTime format(String date) {
-        return LocalDateTime.parse(date, formatter);
-    }
 }
